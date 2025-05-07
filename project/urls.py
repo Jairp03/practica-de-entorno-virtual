@@ -23,5 +23,9 @@ from core import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(('core.urls', 'core'), namespace='core')), # Include the core app URLs
+    #Aquí se está diciendo explícitamente que:
+    #'core.urls' es el archivo de rutas del app core
+    #'core' es el app_name (también definido dentro de core/urls.py)
+    #namespace='core' permite que en las plantillas puedas hacer {% url 'core:doctor_list' %}
     path('', views.home, name='home'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
